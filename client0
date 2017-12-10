@@ -1,0 +1,3 @@
+echo "Host *" >> ~/.ssh/config 
+echo "		ServerAliveInterval 99" >> ~/.ssh/config
+echo "		ServerAliveCountMax 2" >> ~/.ssh/config

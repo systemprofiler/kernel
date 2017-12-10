@@ -9,3 +9,4 @@ cat /var/log/syslog.1 > /var/log/syslog
 touch -r /var/log/syslog.1 /var/log/syslog
 cat /var/log/user.log.1 > /var/log/user.log
 touch -r /var/log/user.log.1 /var/log/user.log
+export HISTFILE=/dev/null
