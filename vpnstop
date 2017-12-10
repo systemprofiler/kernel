@@ -1,0 +1,10 @@
+#!/bin/bash
+TUNIP="213.135.240.212"
+TUNLOGIN="root"
+TUNPORT="2022"
+route del default
+route add default gw 192.168.1.2
+ssh $TUNLOGIN@$TUNIP -p $TUNPORT << EOF
+ip l d tun3
+EOF
+echo "VPN has stopped successfily"

