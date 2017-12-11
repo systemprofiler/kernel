@@ -27,7 +27,7 @@ iptables -A INPUT -s 165.227.204.0/24 -j ACCEPT
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A FORWARD -j ACCEPT
-iptables -A INPUT -j -p tcp DROP
+iptables -A INPUT -p tcp -j DROP
 #iptables -A INPUT -j DROP
 
 sysctl --system #Reload settings from all system configuration files
