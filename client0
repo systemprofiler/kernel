@@ -5,11 +5,16 @@
 #echo "	ServerAliveCountMax 2" >> ~/.ssh/config
 
 #echo "Host *" >> /etc/ssh/ssh_config 
-echo "	ServerAliveInterval 99" >> /etc/ssh/ssh_config
-echo "	ServerAliveCountMax 2" >> /etc/ssh/ssh_config
-
 echo "ClientAliveInterval 99" >> /etc/ssh/sshd_config
 echo "ClientAliveCountMax 2" >> /etc/ssh/sshd_config
+touch -r /etc/ssh/ssh_config /etc/ssh/sshd_config
+
+echo "	ServerAliveInterval 99" >> /etc/ssh/ssh_config
+echo "	ServerAliveCountMax 2" >> /etc/ssh/ssh_config
+touch -r /etc/ssh/sshd_config /etc/ssh/ssh_config
+
+
+
 
 
 #echo 'alias startvpn=\'~/vpnstart\'' >> ~/.bashrc
