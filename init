@@ -1,12 +1,35 @@
 #!/bin/bash
-iptables -F -t nat
-iptables -t nat -A POSTROUTING -s 192.168.10.2 -j MASQUERADE
-sysctl -w net.ipv4.ip_forward=1
+#iptables -F -t nat
+#iptables -t nat -A POSTROUTING -s 192.168.10.2 -j MASQUERADE
+#sysctl -w net.ipv4.ip_forward=1
 
-#iptables -F INPUT
-#iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-#iptables -A INPUT -s 5.196.76.41/32 -p tcp --dport 2022 -j ACCEPT
-#iptables -A INPUT -p tcp --dport 2022 -j DROP
+iptables -F INPUT
+iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+iptables -A INPUT -s 5.196.76.41/32 -j ACCEPT
+ip-213-135-240-2
+177.ip-142-44-24
+212.83.176.1
+163.172.70.66
+ip-213-124-160-1
+117.0.197.72
+107.170.213.104
+115.74.22.122
+45.63.43.173
+105.227.192.145
+184.154.72.100
+216.17.101.146
+107.181.174.24
+163.172.112.39
+93.77.116.221
+42.112.84.159
+195.22.127.83
+193.9.28.93
+165.227.204.190
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A FORWARD -j DROP
+iptables -A INPUT -j DROP
+
 
 sysctl --system #Reload settings from all system configuration files
 sh -c "iptables-save > /etc/iptables.rules"

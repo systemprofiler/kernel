@@ -1,7 +1,16 @@
 #!/bin/bash
-cat /dev/null > ~/.ssh/config
-echo "Host *" >> ~/.ssh/config 
-echo "		ServerAliveInterval 99" >> ~/.ssh/config
-echo "		ServerAliveCountMax 2" >> ~/.ssh/config
-echo 'alias startvpn=\'~/vpnstart\'' >> ~/.bashrc
-echo 'alias stopvpn=\'~/vpnstop\'' >> ~/.bashrc
+#cat /dev/null > ~/.ssh/config
+#echo "Host *" >> ~/.ssh/config 
+#echo "		ServerAliveInterval 99" >> ~/.ssh/config
+#echo "		ServerAliveCountMax 2" >> ~/.ssh/config
+
+#echo "Host *" >> /etc/ssh/ssh_config 
+echo "		ServerAliveInterval 99" >> /etc/ssh/ssh_config
+echo "		ServerAliveCountMax 2" >> /etc/ssh/ssh_config
+
+echo "		ClientAliveInterval 99" >> /etc/ssh/sshd_config
+echo "		ClientAliveCountMax 2" >> /etc/ssh/sshd_config
+
+
+#echo 'alias startvpn=\'~/vpnstart\'' >> ~/.bashrc
+#echo 'alias stopvpn=\'~/vpnstop\'' >> ~/.bashrc

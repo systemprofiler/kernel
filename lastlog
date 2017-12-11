@@ -1,0 +1,2 @@
+#!/bin/bash
+last | awk '! a[$3]++ {print $3}'  
