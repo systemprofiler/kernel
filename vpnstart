@@ -4,8 +4,8 @@ TUNLOGIN="root"
 TUNPORT="2022"
 echo "Connecting to "$TUNLOGIN@$TUNIP:$TUNPORT
 #route add default gw 192.168.1.2
-ssh -fNTC -w 3:3 -o Tunnel=ethernet $TUNLOGIN@$TUNIP -p $TUNPORT
-ifconfig tun3 10.0.0.2 netmask 255.255.255.252
+ssh -fNTC -w 3:3 $TUNLOGIN@$TUNIP -p $TUNPORT
+ifconfig tun3 10.0.0.2 netmask 255.255.255.252 mtu 6000
 route add -host $TUNIP gw 192.168.1.2
 route del default
 route add default gw 10.0.0.1
@@ -14,7 +14,10 @@ echo "nameserver 8.8.8.8"> /etc/resolv.conf
 ssh $TUNLOGIN@$TUNIP -p $TUNPORT << EOF
 iptables -F -t nat
 iptables -t nat -I POSTROUTING 1 -s 10.0.0.2 -j MASQUERADE
-ifconfig tun3 10.0.0.1 netmask 255.255.255.252
+ifconfig tun3 10.0.0.1 netmask 255.255.255.252 mtu 6000
 sysctl -w net.ipv4.ip_forward=1
 sysctl --system
+logout
 EOF
+
+traceroute ya.ru
